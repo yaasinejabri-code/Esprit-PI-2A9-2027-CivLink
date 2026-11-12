@@ -1,0 +1,12 @@
+:root {
+  --civ-midnight: #0D1320;
+  --civ-navy:     #223143;
+  --civ-orange:   #F07832;
+  --civ-ivory:    #E9E0D4;
+  --civ-offwhite: #FBFBFB;
+}
+body { background: var(--civ-offwhite); color: var(--civ-navy); }
+.btn-civ { background: var(--civ-orange); color: #fff; }
+.nav-link.active { color: var(--civ-orange) !important; }
+.footer { background: var(--civ-midnight); }
+.card { background: var(--civ-ivory); border: 0; }
