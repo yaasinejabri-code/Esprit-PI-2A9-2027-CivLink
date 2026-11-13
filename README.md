@@ -39,11 +39,11 @@ Projet Technologies Web 2A | 2026–2027
 ## Getting Started
 1. Cloner le dépôt :
    ```bash
-   git clone https://github.com/<organisation>/Esprit-<PI>-<Classe>-2026-CivLink.git
+   git clone https://github.com/yaasinejabri-code/Esprit-PI-2A9-2027-CivLink.git
    ```
 2. Placer le dossier dans `htdocs` (XAMPP) ou `www` (WAMP) et démarrer Apache + MySQL.
 3. Importer `database/civlink.sql` dans phpMyAdmin.
-4. Ouvrir `http://localhost/CivLink/public/index.php` (Front) et `.../admin.php` (Back).
+4. Ouvrir `http://localhost/Esprit-PI-2A9-2027-CivLink/public/index.php` (Front) et `http://localhost/Esprit-PI-2A9-2027-CivLink/public/admin.php` (Back).
 
 ## Acknowledgments
 Merci à Mme Oumeima Ibn Elfekih et aux tuteurs de **Esprit School of Engineering**. Templates : eLearning (ThemeWagon) et TailAdmin (MIT).
