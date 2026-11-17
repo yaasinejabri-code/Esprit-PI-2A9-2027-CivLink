@@ -1,10 +1,13 @@
 <?php
+// Variables fournies par Controller::render() : $title, $currentPage, $content, $extraScripts
 require_once __DIR__ . '/partials/head.php';
 require_once __DIR__ . '/partials/sidebar.php';
 ?>
-<main class="main-wrapper">
+<div class="admin-main">
     <?php require_once __DIR__ . '/partials/header.php'; ?>
-    <?= $content ?>
+    <main class="p-4">
+        <?= $content ?>
+    </main>
     <?php require_once __DIR__ . '/partials/footer.php'; ?>
-</main>
+</div>
 <?php require_once __DIR__ . '/partials/scripts.php'; ?>

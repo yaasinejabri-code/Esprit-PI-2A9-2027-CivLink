@@ -1,1 +1,3 @@
-<footer class="footer p-3"><small>Developed at Esprit School of Engineering – Tunisia | 2026–2027</small></footer>
+<footer class="text-center text-muted py-3 border-top bg-white">
+    &copy; <?= date('Y') ?> CivLink &middot; Espace d'administration
+</footer>

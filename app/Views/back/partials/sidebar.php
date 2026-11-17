@@ -1,13 +1,21 @@
-<?php $currentPage = $currentPage ?? 'dashboard'; $base = BASE_URL . '/admin.php?page='; ?>
-<aside class="sidebar" style="background:var(--civ-midnight)">
-    <h2 class="p-4" style="color:var(--civ-orange)">CivLink</h2>
+<?php
+$currentPage = $currentPage ?? 'dashboard';
+if (!function_exists('sideActive')) {
+    function sideActive(string $page, string $currentPage): string {
+        return $page === $currentPage ? 'active' : '';
+    }
+}
+?>
+<aside class="admin-sidebar">
+    <div class="brand">CIV<span>LINK</span></div>
+    <div class="sub">Espace d'administration</div>
     <nav>
-        <a href="<?= $base ?>dashboard" class="<?= isActive('dashboard', $currentPage) ?>">Dashboard</a>
-        <a href="<?= $base ?>users" class="<?= isActive('users', $currentPage) ?>">Utilisateurs</a>
-        <a href="<?= $base ?>administrations" class="<?= isActive('administrations', $currentPage) ?>">Administrations</a>
-        <a href="<?= $base ?>demarches" class="<?= isActive('demarches', $currentPage) ?>">Démarches</a>
-        <a href="<?= $base ?>signalements" class="<?= isActive('signalements', $currentPage) ?>">Signalements</a>
-        <a href="<?= $base ?>factures" class="<?= isActive('factures', $currentPage) ?>">Factures</a>
-        <a href="<?= $base ?>faq" class="<?= isActive('faq', $currentPage) ?>">Assistant FAQ</a>
+        <a class="<?= sideActive('dashboard', $currentPage) ?>" href="admin.php?page=dashboard">Tableau de bord</a>
+        <a class="<?= sideActive('utilisateurs', $currentPage) ?>" href="admin.php?page=utilisateurs">Utilisateurs &amp; rôles</a>
+        <a class="<?= sideActive('administrations', $currentPage) ?>" href="admin.php?page=administrations">Administrations &amp; services</a>
+        <a class="<?= sideActive('demarches', $currentPage) ?>" href="admin.php?page=demarches">Démarches &amp; documents</a>
+        <a class="<?= sideActive('signalements', $currentPage) ?>" href="admin.php?page=signalements">Signalements &amp; catégories</a>
+        <a class="<?= sideActive('factures', $currentPage) ?>" href="admin.php?page=factures">Factures &amp; paiements</a>
+        <a class="<?= sideActive('faq', $currentPage) ?>" href="admin.php?page=faq">Assistant FAQ</a>
     </nav>
 </aside>
