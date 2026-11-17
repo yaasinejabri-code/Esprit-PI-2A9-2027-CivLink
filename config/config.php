@@ -1,7 +1,5 @@
 <?php
-// Configuration base de données (XAMPP/WAMP par défaut)
-const DB_HOST = 'localhost';
-const DB_NAME = 'civlink';
-const DB_USER = 'root';
-const DB_PASS = '';
-const BASE_URL = '/CivLink/public';
+define('DB_HOST', '127.0.0.1');
+define('DB_NAME', 'civlink');
+define('DB_USER', 'root');
+define('DB_PASS', '');
