@@ -46,4 +46,4 @@ Projet Technologies Web 2A | 2026–2027
 4. Ouvrir `http://localhost/Esprit-PI-2A9-2027-CivLink/public/index.php` (Front) et `http://localhost/Esprit-PI-2A9-2027-CivLink/public/admin.php` (Back).
 
 ## Acknowledgments
-Merci à Mme Oumeima Ibn Elfekih et aux tuteurs de **Esprit School of Engineering**. Templates : eLearning (ThemeWagon) et TailAdmin (MIT).
+Templates : eLearning (ThemeWagon) et TailAdmin (MIT).
