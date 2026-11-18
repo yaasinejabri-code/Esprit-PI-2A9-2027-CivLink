@@ -2,64 +2,82 @@
 namespace App\Models;
 
 use App\Core\Database;
-use PDO;
 
-class SignalementFront
+class Signalement
 {
-    private static function pdo(): PDO
-    {
-        return Database::getConnection();
-    }
-
     public static function all(): array
     {
-        $sql = "SELECT s.*, c.nom AS categorie
-                FROM signalement s
-                JOIN categorie_signalement c ON c.id = s.categorie_id
-                ORDER BY s.date_creation DESC";
-        return self::pdo()->query($sql)->fetchAll();
-    }
-
-    public static function categories(): array
-    {
-        return self::pdo()->query("SELECT id, nom FROM categorie_signalement ORDER BY nom")->fetchAll();
+        return Database::getConnection()
+            ->query('SELECT s.*, c.nom AS categorie
+                     FROM signalement s
+                     LEFT JOIN categorie_signalement c ON c.id = s.categorie_id
+                     ORDER BY s.date_creation DESC')
+            ->fetchAll();
     }
 
     public static function find(int $id): ?array
     {
-        $st = self::pdo()->prepare("SELECT * FROM signalement WHERE id = ?");
+        $st = Database::getConnection()->prepare('SELECT * FROM signalement WHERE id = ?');
         $st->execute([$id]);
         return $st->fetch() ?: null;
     }
 
-    public static function create(array $d): bool
+    public static function create(array $d): int
     {
-        $st = self::pdo()->prepare(
-            "INSERT INTO signalement (titre, description, photo, latitude, longitude, categorie_id)
-             VALUES (?, ?, ?, ?, ?, ?)"
+        $pdo = Database::getConnection();
+        $st = $pdo->prepare(
+            'INSERT INTO signalement
+             (titre, description, photo, latitude, longitude, categorie_id, utilisateur_id)
+             VALUES (?, ?, ?, ?, ?, ?, ?)'
         );
-        return $st->execute([
-            $d['titre'], $d['description'], $d['photo'],
-            $d['latitude'], $d['longitude'], $d['categorie_id'],
+        $st->execute([
+            $d['titre'],
+            $d['description'] ?? null,
+            $d['photo'] ?? null,
+            ($d['latitude'] ?? '') !== '' ? $d['latitude'] : null,
+            ($d['longitude'] ?? '') !== '' ? $d['longitude'] : null,
+            $d['categorie_id'],
+            $d['utilisateur_id'] ?? null,
         ]);
+        return (int) $pdo->lastInsertId();
     }
 
     public static function update(int $id, array $d): bool
     {
-        $st = self::pdo()->prepare(
-            "UPDATE signalement
-             SET titre = ?, description = ?, photo = ?, latitude = ?, longitude = ?, categorie_id = ?
-             WHERE id = ?"
+        $st = Database::getConnection()->prepare(
+            'UPDATE signalement
+             SET titre = ?, description = ?, latitude = ?, longitude = ?, categorie_id = ?
+             WHERE id = ?'
         );
         return $st->execute([
-            $d['titre'], $d['description'], $d['photo'],
-            $d['latitude'], $d['longitude'], $d['categorie_id'], $id,
+            $d['titre'],
+            $d['description'] ?? null,
+            ($d['latitude'] ?? '') !== '' ? $d['latitude'] : null,
+            ($d['longitude'] ?? '') !== '' ? $d['longitude'] : null,
+            $d['categorie_id'],
+            $id,
         ]);
+    }
+
+    public static function updateStatut(int $id, string $statut): bool
+    {
+        if (!in_array($statut, ['en_attente', 'en_cours', 'resolu'], true)) {
+            return false;
+        }
+        $st = Database::getConnection()->prepare('UPDATE signalement SET statut = ? WHERE id = ?');
+        return $st->execute([$statut, $id]);
     }
 
     public static function delete(int $id): bool
     {
-        $st = self::pdo()->prepare("DELETE FROM signalement WHERE id = ?");
+        $st = Database::getConnection()->prepare('DELETE FROM signalement WHERE id = ?');
         return $st->execute([$id]);
+    }
+
+    public static function categories(): array
+    {
+        return Database::getConnection()
+            ->query('SELECT * FROM categorie_signalement ORDER BY nom')
+            ->fetchAll();
     }
 }
