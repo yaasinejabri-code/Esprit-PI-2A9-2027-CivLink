@@ -1,6 +1,9 @@
 <?php $currentPage = $currentPage ?? ''; $base = BASE_URL . '/index.php?page='; ?>
 <nav class="navbar navbar-expand-lg shadow sticky-top p-0">
-    <a href="<?= $base ?>home" class="navbar-brand px-4"><h2 class="m-0">CivLink</h2></a>
+    <a href="<?= $base ?>home" class="navbar-brand px-4 d-flex align-items-center">
+        <img src="<?= BASE_URL ?>/assets/img/logo-dark.png" alt="CivLink" height="38" class="me-2">
+        <h2 class="m-0">CivLink</h2>
+    </a>
     <div class="navbar-nav ms-auto p-4">
         <a href="<?= $base ?>home" class="nav-item nav-link <?= isActive('home', $currentPage) ?>">Accueil</a>
         <a href="<?= $base ?>administrations" class="nav-item nav-link <?= isActive('administrations', $currentPage) ?>">Administrations</a>

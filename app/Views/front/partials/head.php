@@ -7,5 +7,6 @@
     <link href="<?= BASE_URL ?>/assets/img/favicon.ico" rel="icon">
     <!-- TODO: copier ici les <link> du template eLearning (bootstrap, animate, owl, font-awesome) -->
     <link href="<?= BASE_URL ?>/assets/css/civlink.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="<?= BASE_URL ?>/assets/img/favicon.png">
 </head>
 <body>
