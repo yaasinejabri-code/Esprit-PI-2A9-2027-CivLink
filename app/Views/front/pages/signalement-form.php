@@ -1,7 +1,7 @@
 <?php
 $e = fn($v) => htmlspecialchars((string) $v, ENT_QUOTES, 'UTF-8');
 $isEdit = ($mode ?? 'create') === 'edit';
-$action = 'index.php?page=signalements&action=' . ($isEdit ? 'edit&id=' . (int) $id : 'create');
+$action = BASE_URL . '/index.php?page=' . ($isEdit ? 'signalement-modifier&id=' . (int) $id : 'signalement-nouveau');
 ?>
 <div style="max-width: 720px;">
   <h2><?= $isEdit ? 'Modifier le signalement' : 'Signaler un problème' ?></h2>
@@ -47,12 +47,12 @@ $action = 'index.php?page=signalements&action=' . ($isEdit ? 'edit&id=' . (int) 
     <div class="mb-3">
       <label class="form-label">Photo (optionnel, 2 Mo max)</label>
       <?php if ($isEdit && !empty($old['photo'])): ?>
-        <div class="mb-2"><img src="uploads/signalements/<?= $e($old['photo']) ?>" height="80" alt=""></div>
+        <div class="mb-2"><img src="<?= BASE_URL ?>/uploads/signalements/<?= $e($old['photo']) ?>" height="80" alt=""></div>
       <?php endif; ?>
       <input type="file" name="photo" class="form-control" accept="image/*">
     </div>
 
     <button type="submit" class="btn btn-civ"><?= $isEdit ? 'Enregistrer' : 'Envoyer le signalement' ?></button>
-    <a href="index.php?page=signalements" class="btn btn-outline-secondary">Annuler</a>
+    <a href="<?= BASE_URL ?>/index.php?page=signalements" class="btn btn-outline-secondary">Annuler</a>
   </form>
 </div>

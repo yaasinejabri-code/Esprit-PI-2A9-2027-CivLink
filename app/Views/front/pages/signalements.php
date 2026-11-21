@@ -9,7 +9,7 @@ $messages = ['1' => 'Signalement envoyé ✅', '2' => 'Signalement modifié ✅'
 ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h2 class="m-0">Signalements</h2>
-  <a href="<?= BASE_URL ?>/index.php?page=signalements&action=create" class="btn btn-civ">+ Signaler un problème</a>
+  <a href="<?= BASE_URL ?>/index.php?page=signalement-nouveau" class="btn btn-civ">+ Signaler un problème</a>
 </div>
 
 <?php if (isset($_GET['ok'], $messages[$_GET['ok']])): ?>
@@ -31,17 +31,19 @@ $messages = ['1' => 'Signalement envoyé ✅', '2' => 'Signalement modifié ✅'
         <td><span class="badge <?= $cls ?>"><?= $e($label) ?></span></td>
         <td><?= $e($s['date_creation']) ?></td>
         <td>
-          <div class="d-flex gap-1">
-            <?php if ($s['statut'] === 'en_attente'): ?>
+          <?php if ($s['statut'] === 'en_attente'): ?>
+            <div class="d-flex gap-1">
               <a class="btn btn-sm btn-outline-secondary"
-                 href="<?= BASE_URL ?>/index.php?page=signalements&action=edit&id=<?= (int) $s['id'] ?>">Modifier</a>
-            <?php endif; ?>
-            <form method="post" action="<?= BASE_URL ?>/index.php?page=signalements&action=delete"
-                  onsubmit="return confirm('Supprimer ce signalement ?');">
-              <input type="hidden" name="id" value="<?= (int) $s['id'] ?>">
-              <button class="btn btn-sm btn-outline-danger">Supprimer</button>
-            </form>
-          </div>
+                 href="<?= BASE_URL ?>/index.php?page=signalement-modifier&id=<?= (int) $s['id'] ?>">Modifier</a>
+              <form method="post" action="<?= BASE_URL ?>/index.php?page=signalement-supprimer"
+                    onsubmit="return confirm('Supprimer ce signalement ?');">
+                <input type="hidden" name="id" value="<?= (int) $s['id'] ?>">
+                <button class="btn btn-sm btn-outline-danger">Supprimer</button>
+              </form>
+            </div>
+          <?php else: ?>
+            <span class="text-muted small">Pris en charge</span>
+          <?php endif; ?>
         </td>
       </tr>
     <?php endforeach; ?>

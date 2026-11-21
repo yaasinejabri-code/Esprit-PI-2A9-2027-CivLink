@@ -75,8 +75,12 @@ class SignalementController extends Controller
     public function delete(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            SignalementFront::delete((int) ($_POST['id'] ?? 0));
-            $this->redirect('signalements&ok=3');
+            $sig = SignalementFront::find((int) ($_POST['id'] ?? 0));
+            // seul un signalement "en attente" peut être supprimé par le citoyen
+            if ($sig && $sig['statut'] === 'en_attente') {
+                SignalementFront::delete((int) $sig['id']);
+                $this->redirect('signalements&ok=3');
+            }
         }
         $this->redirect('signalements');
     }
@@ -132,13 +136,30 @@ class SignalementController extends Controller
         if (empty($_FILES['photo']['name'])) {
             return null;
         }
-        $ext = strtolower(pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION));
-        if (!in_array($ext, ['jpg', 'jpeg', 'png', 'webp'], true) || $_FILES['photo']['size'] > 2 * 1024 * 1024) {
-            $errors[] = "Photo invalide (jpg, png ou webp, 2 Mo maximum).";
+        if ($_FILES['photo']['error'] !== UPLOAD_ERR_OK) {
+            $errors[] = "Échec de l'envoi de la photo.";
             return null;
         }
-        $name = uniqid('sig_') . '.' . $ext;
-        $dir  = __DIR__ . '/../../../public/uploads/signalements/';
+        if ($_FILES['photo']['size'] > 2 * 1024 * 1024) {
+            $errors[] = "Photo trop lourde (2 Mo maximum).";
+            return null;
+        }
+
+        // type réel du fichier (pas seulement l'extension)
+        $mime = (new \finfo(FILEINFO_MIME_TYPE))->file($_FILES['photo']['tmp_name']);
+        $allowed = ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp'];
+        if (!isset($allowed[$mime])) {
+            $errors[] = "Photo invalide (jpg, png ou webp).";
+            return null;
+        }
+
+        $dir = __DIR__ . '/../../../public/uploads/signalements/';
+        if (!is_dir($dir) && !mkdir($dir, 0755, true)) {
+            $errors[] = "Impossible de créer le dossier d'envoi.";
+            return null;
+        }
+
+        $name = uniqid('sig_') . '.' . $allowed[$mime];
         if (!move_uploaded_file($_FILES['photo']['tmp_name'], $dir . $name)) {
             $errors[] = "Échec de l'envoi de la photo.";
             return null;
