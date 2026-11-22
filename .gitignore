@@ -1,7 +1,0 @@
-node_modules/
-build/
-.env
-.DS_Store
-
-config/config.php
-public/uploads/
