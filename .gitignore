@@ -1,0 +1,13 @@
+﻿# Config locale (mots de passe)
+config.local.php
+.env
+
+# Fichiers systeme et editeurs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Fichiers temporaires
+*.log
+*.tmp
