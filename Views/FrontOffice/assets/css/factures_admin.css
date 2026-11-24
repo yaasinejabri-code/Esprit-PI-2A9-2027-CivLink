@@ -1,0 +1,30 @@
+/* Administration des factures : complète factures.css (mêmes variables, thème clair/sombre). */
+.fa-hero{padding-bottom:42px}.fa-hero h1{margin-bottom:10px;color:#fff}.fa-hero p{max-width:620px;color:#d3dce6;margin:0}
+.fa-hero .fac-crumb{margin-bottom:30px}
+.fa-body{padding-top:28px}
+.fa-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.fa-tabs{display:flex;gap:6px;margin-bottom:16px;border-bottom:1px solid var(--fac-border)}
+.fa-tabs button{border:0;background:none;color:var(--fac-muted);font-weight:800;font-size:14px;padding:12px 18px;border-bottom:3px solid transparent;cursor:pointer}
+.fa-tabs button.is-active{color:var(--fac-navy);border-bottom-color:var(--fac-orange)}
+.fa-tabs button i{margin-right:7px;color:var(--fac-orange)}
+.fa-add{margin-left:auto;padding:9px 14px;font-size:13px}
+.fa-select{border:1px solid var(--fac-border);border-radius:9px;background:var(--fac-surface);color:var(--fac-navy);padding:9px 12px;font-size:13px}
+.fa-table-wrap{overflow-x:auto}
+.fa-table{width:100%;border-collapse:collapse;font-size:14px;color:var(--fac-navy)}
+.fa-table th{text-align:left;font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:var(--fac-muted);padding:11px 12px;border-bottom:1px solid var(--fac-border);white-space:nowrap}
+.fa-table td{padding:13px 12px;border-bottom:1px solid var(--fac-border);vertical-align:middle}
+.fa-table tr:last-child td{border-bottom:0}
+.fa-table .num{text-align:right;white-space:nowrap}.fa-table .act{text-align:right;white-space:nowrap}
+.fa-table small{display:block;color:var(--fac-muted);font-size:12px}
+.fa-prov{display:inline-flex;align-items:center;gap:6px;font-weight:800}
+.fa-prov.steg i{color:#e9a400}.fa-prov.sonede i{color:#2f8fd1}
+.fa-btn{border:1px solid var(--fac-border);background:var(--fac-surface);color:var(--fac-navy);border-radius:8px;font-size:12px;font-weight:800;padding:7px 10px;margin-left:5px;cursor:pointer}
+.fa-btn:hover:not(:disabled){border-color:var(--fac-orange);color:var(--fac-orange)}
+.fa-btn.danger:hover:not(:disabled){border-color:#c0392b;color:#c0392b}
+.fa-btn:disabled{opacity:.45;cursor:not-allowed}
+.fa-err{display:block;color:#c0392b;font-size:12px;font-weight:700;min-height:0;margin-top:4px}
+.fa-err:empty{display:none}
+.fac-field input[aria-invalid=true],.fac-field select[aria-invalid=true]{border-color:#c0392b}
+.fa-toast{position:fixed;right:22px;bottom:22px;z-index:2000;background:#213147;color:#fff;border-radius:10px;padding:13px 18px;font-size:14px;font-weight:700;box-shadow:0 8px 28px #0004}
+.fa-toast.err{background:#c0392b}.fa-toast[hidden]{display:none}
+@media(max-width:800px){.fa-stats{grid-template-columns:1fr}.fa-add{margin-left:0}}

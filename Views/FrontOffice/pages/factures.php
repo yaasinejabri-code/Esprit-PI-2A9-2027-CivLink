@@ -2,11 +2,13 @@
 require_once __DIR__ . '/../../../Models/Auth.php';
 authStart();
 header('Cache-Control: private, no-store');
-$facturesUser = isset($_SESSION['user']['id']) ? 'user-' . (int) $_SESSION['user']['id'] : 'guest';
+$connected = !empty($_SESSION['user']['id']);
+$isAdmin = $connected && ($_SESSION['user']['role'] ?? '') === 'administrateur';
 $pageTitle = 'Factures et paiements - CivLink';
 $currentPage = 'factures';
 $base = '/CivLink/Views/FrontOffice';
 $assets = $base . '/assets';
+$api = '/CivLink/Controllers/FactureController.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,7 +18,7 @@ $assets = $base . '/assets';
 </head>
 <body>
 <?php require __DIR__ . '/../includes/navbar.php'; ?>
-<main class="factures-page" data-user="<?= htmlspecialchars($facturesUser, ENT_QUOTES, 'UTF-8') ?>" data-authenticated="<?= isset($_SESSION['user']['id']) ? '1' : '0' ?>" data-csrf="<?= htmlspecialchars(authToken(), ENT_QUOTES, 'UTF-8') ?>">
+<main class="factures-page" id="facApp" data-api="<?= htmlspecialchars($api, ENT_QUOTES, 'UTF-8') ?>" data-csrf="<?= $connected ? htmlspecialchars(authToken(), ENT_QUOTES, 'UTF-8') : '' ?>" data-login="<?= $base ?>/pages/authentification.php">
     <section class="fac-hero">
       <div class="container-xl">
         <div class="fac-crumb"><a href="<?= $base ?>/index.php">Accueil</a><i class="fas fa-chevron-right"></i><span>Factures</span></div>
@@ -34,8 +36,16 @@ $assets = $base . '/assets';
       </div>
     </section>
     <div class="container-xl"><div class="fac-demo" role="note"><i class="fas fa-info-circle"></i><div><strong>Mode démonstration</strong> — Les factures et montants affichés sont fictifs. Aucun service STEG/SONEDE n’est connecté et aucun paiement réel n’est effectué.</div></div></div>
+<?php if (!$connected): ?>
+    <section id="mes-factures" class="fac-main container-xl"><div class="fac-panel fac-login"><i class="fas fa-lock"></i><h2>Connexion requise</h2><p>Connectez-vous avec votre compte citoyen pour consulter vos factures et simuler un paiement.</p><a class="fac-btn fac-btn-orange" href="<?= $base ?>/pages/authentification.php">Se connecter <i class="fas fa-arrow-right"></i></a></div></section>
+</main>
+<?php require __DIR__ . '/../includes/footer.php'; ?>
+<?php require __DIR__ . '/../includes/scripts.php'; ?>
+</body></html>
+<?php exit; endif; ?>
+    <?php if ($isAdmin): ?><div class="container-xl"><div class="fac-demo" role="note"><i class="fas fa-user-shield"></i><div>Vous êtes administrateur. <a href="<?= $base ?>/pages/factures_admin.php"><strong>Ouvrir la gestion des factures et des modes de paiement →</strong></a></div></div></div><?php endif; ?>
     <section id="mes-factures" class="fac-main container-xl">
-      <div class="fac-section-heading"><div><span class="fac-kicker">ESPACE FACTURATION</span><h2>Mes factures</h2><p>Retrouvez vos factures de services publics dans un seul espace.</p></div><div><span class="fac-count" id="facCount">Chargement des factures...</span> <button type="button" class="fac-btn fac-btn-outline" id="facReset" <?= isset($_SESSION['user']['id']) ? 'hidden' : '' ?>>Réinitialiser la simulation</button></div></div>
+      <div class="fac-section-heading"><div><span class="fac-kicker">ESPACE FACTURATION</span><h2>Mes factures</h2><p>Factures créées par l’administration CivLink pour votre compte.</p></div><span class="fac-count" id="facCount">Chargement…</span></div>
       <div class="fac-stats" aria-label="Résumé de facturation">
         <div class="fac-stat"><div class="fac-stat-icon orange"><i class="far fa-file-alt"></i></div><div><small>Factures en attente</small><strong id="statPending">—</strong><span>À régler (simulation)</span></div></div>
         <div class="fac-stat"><div class="fac-stat-icon navy"><i class="fas fa-wallet"></i></div><div><small>Montant à régler</small><strong id="statAmount">—</strong><span>En dinars tunisiens</span></div></div>
@@ -48,9 +58,9 @@ $assets = $base . '/assets';
       </div>
       <div class="fac-bottom-grid"><section class="fac-panel fac-history"><div class="fac-panel-heading"><div><span class="fac-kicker">VOS OPÉRATIONS</span><h2>Historique des paiements</h2></div><i class="fas fa-history"></i></div><div id="facHistory" aria-live="polite"></div></section><section class="fac-help" id="comment-ca-marche"><span class="fac-kicker">GUIDE RAPIDE</span><h2>Comment ça marche ?</h2><div class="fac-step"><span>01</span><div><strong>Consultez les factures</strong><p>Choisissez STEG ou SONEDE et recherchez une référence.</p></div></div><div class="fac-step"><span>02</span><div><strong>Vérifiez le montant</strong><p>Consultez les détails, la période et l’échéance.</p></div></div><div class="fac-step"><span>03</span><div><strong>Simulez le paiement</strong><p>Confirmez l’opération pour voir le reçu de démonstration.</p></div></div></section></div>
     </section>
+<div class="fac-modal" id="facModal" hidden><div class="fac-modal-scrim" data-close="true"></div><div class="fac-modal-card" role="dialog" aria-modal="true" aria-labelledby="facModalTitle"><button class="fac-close" type="button" id="facClose" aria-label="Fermer"><i class="fas fa-times"></i></button><span class="fac-kicker">PAIEMENT FICTIF</span><h2 id="facModalTitle">Confirmer la simulation</h2><div id="facModalDetail"></div><div id="facModeChoice" hidden></div><p class="fac-error" id="facError" role="alert" hidden></p><p class="fac-modal-notice"><i class="fas fa-lock"></i> Simulation : les informations saisies ne sont ni enregistrées ni transmises.</p><div class="fac-modal-actions"><a class="fac-btn fac-btn-orange" id="facDownload" href="#" hidden download><i class="fas fa-download"></i> Télécharger le reçu</a><button type="button" class="fac-btn fac-btn-outline" id="facCancelPay" hidden>Annuler le paiement</button><button type="button" class="fac-btn fac-btn-outline" id="facCancel">Annuler</button><button type="button" class="fac-btn fac-btn-orange" id="facConfirm">Confirmer la simulation <i class="fas fa-check"></i></button></div></div></div>
 </main>
-<div class="fac-modal" id="facModal" hidden><div class="fac-modal-scrim" data-close="true"></div><div class="fac-modal-card" role="dialog" aria-modal="true" aria-labelledby="facModalTitle"><button class="fac-close" type="button" id="facClose" aria-label="Fermer"><i class="fas fa-times"></i></button><span class="fac-kicker">PAIEMENT FICTIF</span><h2 id="facModalTitle">Confirmer la simulation</h2><div id="facModalDetail"></div><p class="fac-modal-notice"><i class="fas fa-lock"></i> Aucune carte bancaire ni donnée de paiement n’est demandée.</p><div class="fac-modal-actions"><button type="button" class="fac-btn fac-btn-outline" id="facCancel">Annuler</button><button type="button" class="fac-btn fac-btn-orange" id="facConfirm">Confirmer la simulation <i class="fas fa-check"></i></button></div></div></div>
 <?php require __DIR__ . '/../includes/footer.php'; ?>
 <?php require __DIR__ . '/../includes/scripts.php'; ?>
-<script src="<?= $assets ?>/js/factures.js?v=3" defer></script>
+<script src="<?= $assets ?>/js/factures.js?v=4" defer></script>
 </body></html>
