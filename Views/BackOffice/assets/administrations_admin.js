@@ -5,6 +5,87 @@
         });
     });
 
+    function text(max, required) {
+        return function (v) {
+            v = v.trim();
+            if (required && v === '') return 'Ce champ est obligatoire.';
+            if (v.length > max) return 'Maximum ' + max + ' caractères.';
+            return '';
+        };
+    }
+
+    function coord(min, max) {
+        return function (v) {
+            v = v.trim();
+            if (v === '') return 'Ce champ est obligatoire.';
+            if (!/^-?\d+(\.\d+)?$/.test(v)) return 'Saisissez un nombre (ex. 36.8065).';
+            var n = parseFloat(v);
+            if (n < min || n > max) return 'Valeur entre ' + min + ' et ' + max + '.';
+            return '';
+        };
+    }
+
+    function choice(v) {
+        return v === '' ? 'Faites un choix.' : '';
+    }
+
+    var rules = {
+        admForm: {
+            nom: text(160, true), typeAdministration: choice, adresse: text(220, true),
+            horaires: text(120, false), telephone: text(40, false),
+            latitude: coord(-90, 90), longitude: coord(-180, 180)
+        },
+        svcForm: {
+            idAdministration: choice, nomService: text(120, true), description: text(2000, false)
+        }
+    };
+
+    function showError(field, message) {
+        var label = field.closest('label');
+        var msg = label.querySelector('.field-error');
+        field.classList.toggle('is-invalid', message !== '');
+        field.setAttribute('aria-invalid', message !== '' ? 'true' : 'false');
+        if (message === '') {
+            if (msg) msg.remove();
+            return;
+        }
+        if (!msg) {
+            msg = document.createElement('span');
+            msg.className = 'field-error';
+            label.appendChild(msg);
+        }
+        msg.textContent = message;
+    }
+
+    Object.keys(rules).forEach(function (formId) {
+        var form = document.getElementById(formId);
+        if (!form) return;
+        var formRules = rules[formId];
+        function check(name) {
+            var field = form.elements[name];
+            var message = formRules[name](field.value);
+            showError(field, message);
+            return message === '';
+        }
+        Object.keys(formRules).forEach(function (name) {
+            var field = form.elements[name];
+            field.addEventListener(field.tagName === 'SELECT' ? 'change' : 'input', function () {
+                if (field.classList.contains('is-invalid')) check(name);
+            });
+            field.addEventListener('blur', function () { check(name); });
+        });
+        form.addEventListener('submit', function (e) {
+            var firstInvalid = null;
+            Object.keys(formRules).forEach(function (name) {
+                if (!check(name) && !firstInvalid) firstInvalid = form.elements[name];
+            });
+            if (firstInvalid) {
+                e.preventDefault();
+                firstInvalid.focus();
+            }
+        });
+    });
+
     var inp = document.getElementById('admAdresse');
     var box = document.getElementById('admSuggestions');
     var lat = document.getElementById('admLat');
@@ -43,6 +124,7 @@
                         inp.value = label;
                         lat.value = coords[1];
                         lng.value = coords[0];
+                        [inp, lat, lng].forEach(function (f) { showError(f, ''); });
                         sequence++;
                         close();
                     });

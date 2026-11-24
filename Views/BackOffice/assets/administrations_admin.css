@@ -35,6 +35,9 @@
 .dark .civ-adm #admSuggestions { background: #1f2937; }
 .civ-adm #admSuggestions button { display: block; width: 100%; text-align: left; padding: 9px; border: 0; background: transparent; color: inherit; cursor: pointer; }
 .civ-adm #admSuggestions button:hover { background: #fff1e6; color: #17253b; }
+.civ-adm .is-invalid { border-color: #b91c1c; }
+.civ-adm .field-error { display: block; margin-top: 5px; color: #b91c1c; font-size: 12px; font-weight: 500; }
+.dark .civ-adm .field-error { color: #f87171; }
 @media (max-width: 650px) {
     .civ-adm .grid { grid-template-columns: 1fr; }
     .civ-adm .panel { padding: 16px; }
