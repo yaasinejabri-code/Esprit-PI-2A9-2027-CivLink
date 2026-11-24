@@ -1,0 +1,1235 @@
+/* CIVLINK BRAND COLORS */
+:root {
+    --primary: #F28C28;
+    --secondary: #173B63;
+    --light: #F5F7FA;
+    --dark: #263238;
+}
+
+/* Main buttons */
+.btn-primary {
+    background-color: #F28C28 !important;
+    border-color: #F28C28 !important;
+}
+
+.btn-primary:hover {
+    background-color: #D97616 !important;
+    border-color: #D97616 !important;
+}
+
+/* Secondary buttons */
+.btn-secondary {
+    background-color: #173B63 !important;
+    border-color: #173B63 !important;
+}
+
+/* Text and links */
+.text-primary {
+    color: #F28C28 !important;
+}
+
+a {
+    color: #173B63;
+}
+
+a:hover {
+    color: #F28C28;
+}
+
+/* Backgrounds */
+.bg-primary {
+    background-color: #F28C28 !important;
+}
+
+.bg-secondary {
+    background-color: #173B63 !important;
+}
+
+
+/* ==========================================================
+   HEADER / NAVBAR CIVLINK
+   ========================================================== */
+.civlink-header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    background: #fff;
+    box-shadow: 0 2px 14px rgba(23, 59, 99, .08);
+}
+
+.civlink-nav {
+    padding: 0;
+    min-height: 84px;
+}
+
+/* Logo */
+.civlink-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+.civlink-logo {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+}
+
+.civlink-brand-sep {
+    width: 1px;
+    height: 44px;
+    background: #d9dee5;
+}
+
+.civlink-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.civlink-wordmark {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1.9rem;
+    letter-spacing: -.5px;
+    color: #173B63;
+}
+
+.civlink-wordmark span {
+    color: #F28C28;
+}
+
+.civlink-brand-text small {
+    margin-top: 4px;
+    font-size: .74rem;
+    font-weight: 500;
+    color: #173B63;
+}
+
+/* Liens du menu */
+.civlink-menu .nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 30px 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: .92rem;
+    font-weight: 700;
+    color: #173B63;
+    transition: color .2s;
+}
+
+.civlink-menu .nav-link i {
+    font-size: 1rem;
+    margin: 0;
+    color: #173B63;
+    transition: color .2s;
+}
+
+.civlink-menu .nav-link:hover,
+.civlink-menu .nav-link:hover i,
+.civlink-menu .nav-link.active,
+.civlink-menu .nav-link.active i {
+    color: #F28C28;
+}
+
+/* Soulignement orange du lien actif */
+.civlink-menu .nav-link.active::after {
+    content: '';
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 18px;
+    height: 3px;
+    border-radius: 3px;
+    background: #F28C28;
+}
+
+/* Séparateur vertical avant la loupe */
+.civlink-divider {
+    width: 1px;
+    height: 28px;
+    margin: 0 8px;
+    background: #d9dee5;
+}
+
+.civlink-search {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+/* Bouton Connexion */
+.civlink-login {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 50px;
+    background: #F28C28;
+    color: #fff !important;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: .92rem;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(242, 140, 40, .35);
+    transition: background .2s, transform .2s;
+}
+
+.civlink-login:hover {
+    background: #D97616;
+    transform: translateY(-1px);
+}
+
+/* Bouton burger (mobile) */
+.civlink-toggler {
+    border: 1px solid #F28C28;
+}
+
+/* Mobile / tablette */
+@media (max-width: 1199.98px) {
+    .civlink-menu {
+        padding: 10px 0 18px;
+    }
+
+    .civlink-menu .nav-link {
+        padding: 12px 4px;
+    }
+
+    .civlink-menu .nav-link.active::after {
+        left: 4px;
+        right: auto;
+        width: 40px;
+        bottom: 6px;
+    }
+}
+
+
+/* ==========================================================
+   HERO (page d'accueil)
+   ========================================================== */
+.civlink-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 64px 0 96px;
+    background: #fff;
+}
+
+.hero-title {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4.2vw, 3.3rem);
+    line-height: 1.12;
+    letter-spacing: -.5px;
+    color: #173B63;
+    margin-bottom: 1.2rem;
+}
+
+.hero-title span {
+    color: #F28C28;
+}
+
+.hero-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #263238;
+    margin-bottom: 2rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+/* Boutons pilule */
+.btn-civ {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 28px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: .98rem;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: all .25s;
+}
+
+.btn-civ-primary {
+    background: #F28C28;
+    color: #fff !important;
+    box-shadow: 0 6px 16px rgba(242, 140, 40, .35);
+}
+
+.btn-civ-primary:hover {
+    background: #D97616;
+    transform: translateY(-2px);
+}
+
+.btn-civ-outline {
+    background: #fff;
+    color: #173B63 !important;
+    border-color: #173B63;
+}
+
+.btn-civ-outline:hover {
+    background: #173B63;
+    color: #fff !important;
+}
+
+/* Visuel à droite : bord gauche courbe + liseré orange */
+.hero-visual {
+    position: relative;
+    height: 400px;
+}
+
+.hero-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0 -400px 0 -16px;
+    background: #F28C28;
+    border-radius: 60% 0 0 60% / 100% 0 0 100%;
+}
+
+.hero-visual-frame {
+    position: absolute;
+    inset: 0 -400px 0 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #dbeaf7, #f6fbff);
+    border-radius: 60% 0 0 60% / 100% 0 0 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-visual-frame img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-visual-placeholder {
+    font-size: 6rem;
+    color: #173B63;
+    opacity: .25;
+}
+
+/* Formes décoratives en bas à gauche */
+.hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.hero-blob-navy {
+    width: 260px;
+    height: 260px;
+    left: -140px;
+    bottom: -90px;
+    background: #173B63;
+}
+
+.hero-blob-orange {
+    width: 260px;
+    height: 260px;
+    left: -120px;
+    bottom: -60px;
+    background: #F28C28;
+    opacity: .9;
+    clip-path: circle(60% at 30% 30%);
+}
+
+.hero-blob-orange {
+    z-index: 0;
+}
+
+/* Barre de recherche */
+.civlink-search-bar {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    max-width: 1120px;
+    margin: -44px auto 0;
+    padding: 10px 10px 10px 26px;
+    background: #fff;
+    border-radius: 60px;
+    box-shadow: 0 8px 30px rgba(23, 59, 99, .14);
+}
+
+.civlink-search-bar i {
+    font-size: 1.15rem;
+    color: #173B63;
+}
+
+.civlink-search-bar input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: 1rem;
+    color: #263238;
+}
+
+.civlink-search-bar button {
+    border: 0;
+    padding: 12px 34px;
+    border-radius: 50px;
+    background: #F28C28;
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    transition: background .2s;
+}
+
+.civlink-search-bar button:hover {
+    background: #D97616;
+}
+
+@media (max-width: 991.98px) {
+    .civlink-hero { padding: 40px 0 80px; }
+    .hero-visual { height: 280px; margin-top: 10px; }
+    .hero-visual::before,
+    .hero-visual-frame { right: -16px; }
+    .civlink-search-bar button { padding: 12px 20px; }
+}
+
+
+/* ==========================================================
+   CARTES DE SERVICES
+   ========================================================== */
+.civlink-services {
+    padding: 32px 0 24px;
+}
+
+.service-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: 100%;
+    min-height: 92px;
+    padding: 16px 18px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(23, 59, 99, .09);
+    text-decoration: none;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 26px rgba(23, 59, 99, .16);
+}
+
+.service-icon {
+    flex-shrink: 0;
+    font-size: 1.9rem;
+    color: #F28C28;
+    width: 34px;
+    text-align: center;
+}
+
+.service-label {
+    flex: 1;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: .92rem;
+    line-height: 1.25;
+    color: #173B63;
+}
+
+.service-label em {
+    font-style: normal;
+    color: #F28C28;
+}
+
+.service-arrow {
+    flex-shrink: 0;
+    font-size: .85rem;
+    color: #F28C28;
+    transition: transform .25s;
+}
+
+.service-card:hover .service-arrow {
+    transform: translateX(4px);
+}
+
+
+/* ==========================================================
+   POURQUOI CHOISIR CIVLINK + ASSISTANT FAQ
+   ========================================================== */
+.civlink-why {
+    padding: 28px 0 40px;
+}
+
+.why-title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 28px;
+    padding-bottom: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #173B63;
+}
+
+.why-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 46px;
+    height: 3px;
+    border-radius: 3px;
+    background: #F28C28;
+}
+
+.why-item {
+    display: flex;
+    gap: 14px;
+    height: 100%;
+    padding: 0 6px;
+}
+
+@media (min-width: 768px) {
+    .why-list > div + div .why-item {
+        border-left: 1px solid #e3e8ee;
+        padding-left: 18px;
+    }
+}
+
+.why-item > i {
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 2rem;
+    color: #F28C28;
+}
+
+.why-item h5 {
+    margin-bottom: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: #173B63;
+}
+
+.why-item p {
+    margin: 0;
+    font-size: .88rem;
+    line-height: 1.4;
+    color: #263238;
+}
+
+/* Carte Assistant FAQ */
+.faq-card {
+    padding: 20px 22px 22px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 28px rgba(23, 59, 99, .12);
+}
+
+.faq-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.faq-head i {
+    font-size: 1.5rem;
+    color: #F28C28;
+}
+
+.faq-head h5 {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: #173B63;
+}
+
+.faq-bubble {
+    max-width: 88%;
+    padding: 9px 16px;
+    border-radius: 18px;
+    font-size: .88rem;
+    line-height: 1.35;
+}
+
+.faq-user {
+    margin: 0 0 12px auto;
+    background: #F28C28;
+    color: #fff;
+}
+
+.faq-bot {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.faq-bot > i {
+    flex-shrink: 0;
+    font-size: 1.4rem;
+    color: #F28C28;
+}
+
+.faq-answer {
+    background: #eef0f3;
+    color: #263238;
+}
+
+.faq-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 5px 5px 18px;
+    border: 1px solid #dfe4ea;
+    border-radius: 50px;
+}
+
+.faq-input input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: .9rem;
+}
+
+.faq-input button {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 50%;
+    background: #F28C28;
+    color: #fff;
+    font-size: .8rem;
+}
+
+.faq-input button:hover {
+    background: #D97616;
+}
+
+/* Bouton de chat flottant */
+.chat-fab {
+    position: fixed;
+    right: 28px;
+    bottom: 28px;
+    z-index: 1040;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: #F28C28;
+    color: #fff !important;
+    font-size: 1.6rem;
+    box-shadow: 0 8px 22px rgba(242, 140, 40, .5);
+    transition: transform .25s, background .25s;
+}
+
+.chat-fab:hover {
+    background: #D97616;
+    transform: scale(1.06);
+}
+
+
+/* ==========================================================
+   FOND DE PAGE, DÉCOR VILLE, FOOTER
+   ========================================================== */
+body {
+    background: #F5F7FA;
+}
+
+/* Skyline décorative (section "Pourquoi choisir") */
+.civlink-why {
+    position: relative;
+    padding-bottom: 130px;
+}
+
+.city-skyline {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: min(620px, 55%);
+    height: 120px;
+    pointer-events: none;
+}
+
+.city-skyline svg {
+    width: 100%;
+    height: 100%;
+}
+
+.civlink-why .container-xl {
+    position: relative;
+    z-index: 1;
+}
+
+/* Footer */
+.civlink-footer {
+    position: relative;
+    margin-top: 0;
+    padding: 56px 0 0;
+    background: #173B63;
+    color: #dbe5f1;
+}
+
+.footer-swoosh {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% - 2px);   /* léger chevauchement : supprime la fine ligne entre la vague et le footer */
+    width: 48%;
+    height: 92px;
+    display: block;
+    pointer-events: none;
+}
+
+.footer-wordmark {
+    display: inline-block;
+    margin-bottom: 18px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1.9rem;
+    letter-spacing: -.5px;
+    color: #fff !important;
+    text-decoration: none;
+}
+
+.footer-wordmark span {
+    color: #F28C28;
+}
+
+.footer-about {
+    max-width: 380px;
+    line-height: 1.65;
+    color: #dbe5f1;
+}
+
+.footer-title {
+    margin-bottom: 18px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: #fff;
+}
+
+.footer-links,
+.footer-contact {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-links li,
+.footer-contact li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #dbe5f1;
+    text-decoration: none;
+    transition: color .2s;
+}
+
+.footer-links a:hover {
+    color: #F28C28;
+}
+
+.footer-contact i {
+    width: 26px;
+    color: #F28C28;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 44px;
+    padding: 20px 0 24px;
+    border-top: 1px solid rgba(255, 255, 255, .12);
+    font-size: .88rem;
+    color: #c4d1e2;
+}
+
+@media (max-width: 991.98px) {
+    .footer-swoosh { width: 80%; height: 60px; }
+    .city-skyline { width: 80%; }
+}
+
+
+/* ==========================================================
+   ANIMATIONS
+   ========================================================== */
+
+/* Photo du hero : léger zoom lent */
+.hero-visual-frame img {
+    animation: heroZoom 14s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+    from { transform: scale(1); }
+    to   { transform: scale(1.08); }
+}
+
+/* Formes décoratives du hero : flottement */
+.hero-blob-navy   { animation: floatY 7s ease-in-out infinite; }
+.hero-blob-orange { animation: floatY 9s ease-in-out infinite reverse; }
+
+@keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-14px); }
+}
+
+/* Bouton de chat : pulsation */
+.chat-fab {
+    animation: fabPulse 2.4s ease-out infinite;
+}
+
+@keyframes fabPulse {
+    0%   { box-shadow: 0 8px 22px rgba(242, 140, 40, .5), 0 0 0 0 rgba(242, 140, 40, .45); }
+    70%  { box-shadow: 0 8px 22px rgba(242, 140, 40, .5), 0 0 0 18px rgba(242, 140, 40, 0); }
+    100% { box-shadow: 0 8px 22px rgba(242, 140, 40, .5), 0 0 0 0 rgba(242, 140, 40, 0); }
+}
+
+/* Icônes des cartes : petit rebond au survol */
+.service-card:hover .service-icon {
+    animation: iconBounce .6s ease;
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0); }
+    40%      { transform: translateY(-7px); }
+    70%      { transform: translateY(2px); }
+}
+
+/* Éléments "pourquoi choisir" : icône qui grossit au survol */
+.why-item > i {
+    transition: transform .3s;
+}
+
+.why-item:hover > i {
+    transform: scale(1.18) rotate(-6deg);
+}
+
+/* Menu : soulignement qui apparaît au survol */
+.civlink-menu .nav-link:not(.active):not(.civlink-search)::after {
+    content: '';
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 18px;
+    height: 3px;
+    border-radius: 3px;
+    background: #F28C28;
+    transform: scaleX(0);
+    transition: transform .25s;
+}
+
+.civlink-menu .nav-link:not(.active):not(.civlink-search):hover::after {
+    transform: scaleX(1);
+}
+
+/* Respect des préférences d'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+    .hero-visual-frame img,
+    .hero-blob-navy,
+    .hero-blob-orange,
+    .chat-fab {
+        animation: none;
+    }
+}
+
+
+/* ==========================================================
+   MODE SOMBRE
+   ========================================================== */
+
+/* Logos : un seul visible selon le thème */
+.civlink-logo { width: auto; height: 56px; }
+.logo-dark { display: none; }
+[data-theme="dark"] .logo-light { display: none; }
+[data-theme="dark"] .logo-dark  { display: block; }
+
+/* Bouton lune / soleil */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin: 0 4px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #173B63;
+    font-size: 1.05rem;
+    transition: background .2s, color .2s, transform .3s;
+}
+
+.theme-toggle:hover {
+    background: rgba(242, 140, 40, .15);
+    color: #F28C28;
+    transform: rotate(15deg);
+}
+
+.theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun  { display: inline-block; color: #F28C28; }
+
+/* Transition douce entre les thèmes */
+body, .civlink-header, .civlink-hero, .service-card, .faq-card,
+.civlink-search-bar, .civlink-footer {
+    transition: background-color .35s, color .35s, box-shadow .35s;
+}
+
+/* ---- Couleurs sombres ---- */
+[data-theme="dark"] body            { background: #0B1F36; color: #dbe5f1; }
+[data-theme="dark"] a               { color: #9fc0e6; }
+[data-theme="dark"] a:hover         { color: #F28C28; }
+
+/* Header */
+[data-theme="dark"] .civlink-header { background: #0F2A47; box-shadow: 0 2px 14px rgba(0, 0, 0, .35); }
+[data-theme="dark"] .civlink-brand-sep { background: #2b4a6e; }
+[data-theme="dark"] .civlink-wordmark,
+[data-theme="dark"] .civlink-brand-text small { color: #fff; }
+[data-theme="dark"] .civlink-wordmark span    { color: #F28C28; }
+[data-theme="dark"] .civlink-menu .nav-link,
+[data-theme="dark"] .civlink-menu .nav-link i { color: #e6eef8; }
+[data-theme="dark"] .civlink-menu .nav-link:hover,
+[data-theme="dark"] .civlink-menu .nav-link:hover i,
+[data-theme="dark"] .civlink-menu .nav-link.active,
+[data-theme="dark"] .civlink-menu .nav-link.active i { color: #F28C28; }
+[data-theme="dark"] .civlink-divider { background: #2b4a6e; }
+[data-theme="dark"] .civlink-toggler { border-color: #F28C28; }
+[data-theme="dark"] .civlink-toggler .navbar-toggler-icon { filter: invert(1); }
+[data-theme="dark"] .theme-toggle:not(:hover) { color: #e6eef8; }
+
+/* Hero */
+[data-theme="dark"] .civlink-hero    { background: #0B1F36; }
+[data-theme="dark"] .hero-title      { color: #fff; }
+[data-theme="dark"] .hero-title span { color: #F28C28; }
+[data-theme="dark"] .hero-text       { color: #c4d1e2; }
+[data-theme="dark"] .btn-civ-outline { background: transparent; color: #fff !important; border-color: #fff; }
+[data-theme="dark"] .btn-civ-outline:hover { background: #fff; color: #0B1F36 !important; }
+[data-theme="dark"] .hero-visual-frame { background: linear-gradient(135deg, #163a61, #0F2A47); }
+[data-theme="dark"] .hero-visual-placeholder { color: #fff; }
+[data-theme="dark"] .hero-blob-navy  { background: #1E4A78; }
+
+/* Recherche + cartes */
+[data-theme="dark"] .civlink-search-bar { background: #0F2A47; box-shadow: 0 8px 30px rgba(0, 0, 0, .4); }
+[data-theme="dark"] .civlink-search-bar i { color: #e6eef8; }
+[data-theme="dark"] .civlink-search-bar input { color: #fff; }
+[data-theme="dark"] .civlink-search-bar input::placeholder,
+[data-theme="dark"] .faq-input input::placeholder { color: #8ea6c2; }
+[data-theme="dark"] .service-card { background: #0F2A47; box-shadow: 0 4px 18px rgba(0, 0, 0, .35); }
+[data-theme="dark"] .service-label { color: #fff; }
+[data-theme="dark"] .service-label em { color: #F28C28; }
+
+/* Pourquoi choisir + FAQ */
+[data-theme="dark"] .why-title,
+[data-theme="dark"] .why-item h5,
+[data-theme="dark"] .faq-head h5 { color: #fff; }
+[data-theme="dark"] .why-item p  { color: #c4d1e2; }
+[data-theme="dark"] .why-list > div + div .why-item { border-left-color: #2b4a6e; }
+[data-theme="dark"] .faq-card    { background: #0F2A47; box-shadow: 0 8px 28px rgba(0, 0, 0, .4); }
+[data-theme="dark"] .faq-answer  { background: #1a3a5f; color: #e6eef8; }
+[data-theme="dark"] .faq-input   { border-color: #2b4a6e; }
+[data-theme="dark"] .faq-input input { color: #fff; }
+[data-theme="dark"] .city-skyline svg g { fill: #13304f; }
+
+/* Footer */
+[data-theme="dark"] .civlink-footer { background: #07182B; }
+[data-theme="dark"] .footer-swoosh path:first-child { fill: #07182B; }
+[data-theme="dark"] .footer-bottom { border-top-color: rgba(255, 255, 255, .1); }
+.civlink-logo-img { height: 56px; width: auto; }
+/* ===== Page Administrations ===== */
+:root {
+    --adm-navy: #173B63;
+    --adm-orange: #F28C28;
+    --adm-bg: #F5F7FA;
+    --adm-surface: #ffffff;
+    --adm-text: #263238;
+    --adm-muted: #5d6b75;
+    --adm-border: #e1e6ec;
+}
+[data-theme="dark"] {
+    --adm-bg: #0f1822;
+    --adm-surface: #172433;
+    --adm-text: #e8edf2;
+    --adm-muted: #9fb0bf;
+    --adm-border: #263a4e;
+    --adm-navy: #8fb6e0;
+}
+
+.adm-header { background: var(--adm-bg); padding: 2.5rem 0 1.5rem; }
+.adm-crumbs { font-size: .9rem; color: var(--adm-muted); margin-bottom: 1rem; }
+.adm-crumbs a { color: var(--adm-muted); text-decoration: none; }
+.adm-crumbs a:hover { color: var(--adm-orange); }
+.adm-crumbs i { font-size: .65rem; margin: 0 .5rem; }
+.adm-title { font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--adm-navy); font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: .5rem; }
+.adm-lead { color: var(--adm-muted); max-width: 60ch; margin-bottom: 1.5rem; }
+.adm-search { margin-bottom: 1.25rem; }
+
+.adm-filters { display: flex; flex-wrap: wrap; gap: .5rem; }
+.adm-chip {
+    border: 1px solid var(--adm-border); background: var(--adm-surface); color: var(--adm-text);
+    border-radius: 999px; padding: .45rem 1rem; font-weight: 600; font-size: .9rem; cursor: pointer;
+    transition: background .15s, border-color .15s, color .15s;
+}
+.adm-chip:hover { border-color: var(--adm-orange); }
+.adm-chip.is-active { background: var(--adm-orange); border-color: var(--adm-orange); color: #fff; }
+.adm-chip:focus-visible, .adm-link:focus-visible { outline: 3px solid var(--adm-orange); outline-offset: 2px; }
+
+.adm-list { background: var(--adm-bg); padding: 1rem 0 4rem; }
+.adm-count { color: var(--adm-muted); font-size: .9rem; margin-bottom: 1rem; }
+.adm-item[hidden] { display: none; }
+
+.adm-card {
+    height: 100%; display: flex; flex-direction: column;
+    background: var(--adm-surface); border: 1px solid var(--adm-border); border-radius: 14px; padding: 1.5rem;
+}
+.adm-card-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.adm-icon {
+    flex: none; width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center;
+    background: rgba(242, 140, 40, .14); color: var(--adm-orange); font-size: 1.3rem;
+}
+.adm-name { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--adm-navy); margin: 0; }
+.adm-cat { font-size: .85rem; color: var(--adm-muted); }
+.adm-desc { color: var(--adm-text); margin-bottom: 1rem; }
+.adm-meta { list-style: none; padding: 0; margin: 0 0 1.25rem; font-size: .92rem; color: var(--adm-muted); }
+.adm-meta li { display: flex; gap: .65rem; align-items: baseline; margin-bottom: .35rem; }
+.adm-meta i { width: 1rem; text-align: center; color: var(--adm-orange); }
+.adm-link { margin-top: auto; font-weight: 700; color: var(--adm-navy); text-decoration: none; }
+.adm-link i { font-size: .8rem; margin-left: .35rem; transition: transform .15s; }
+.adm-link:hover { color: var(--adm-orange); }
+.adm-link:hover i { transform: translateX(3px); }
+
+.adm-empty { text-align: center; padding: 3rem 1rem; color: var(--adm-muted); }
+.adm-empty[hidden] { display: none; }
+.adm-empty i { font-size: 2.5rem; color: var(--adm-orange); margin-bottom: 1rem; }
+.adm-empty h3 { color: var(--adm-navy); font-family: 'Nunito', sans-serif; }
+
+@media (prefers-reduced-motion: reduce) {
+    .adm-chip, .adm-link i { transition: none;} 
+}
+
+/* ===== Administrations : carte interactive (à ajouter à la fin de civlink.css, après le CSS déjà collé) ===== */
+.adm-locate { display: flex; flex-wrap: wrap; gap: .75rem; align-items: stretch; margin-bottom: .5rem; }
+.adm-locate .adm-search { flex: 1 1 340px; margin-bottom: 0; display: flex; align-items: center; }
+.adm-locate .adm-search input { flex: 1; min-width: 0; }
+.adm-go {
+    border: 0; border-radius: 8px; padding: .5rem 1.1rem; font-weight: 700; cursor: pointer;
+    background: var(--adm-orange); color: #fff;
+}
+.adm-go:hover { filter: brightness(.95); }
+.adm-geo, .adm-radius {
+    display: inline-flex; align-items: center; gap: .5rem; border: 1px solid var(--adm-border);
+    background: var(--adm-surface); color: var(--adm-text); border-radius: 10px; padding: .55rem 1rem; font-weight: 600;
+}
+.adm-geo { cursor: pointer; }
+.adm-geo i { color: var(--adm-orange); }
+.adm-geo:hover { border-color: var(--adm-orange); }
+.adm-radius select { border: 0; background: transparent; color: inherit; font-weight: 700; }
+.adm-go:focus-visible, .adm-geo:focus-visible, .adm-radius select:focus-visible, .adm-res button:focus-visible { outline: 3px solid var(--adm-orange); outline-offset: 2px; }
+.adm-status { color: var(--adm-muted); font-size: .9rem; min-height: 1.4em; margin-bottom: 1rem; }
+
+.adm-map-layout { display: grid; grid-template-columns: 360px 1fr; gap: 1.25rem; }
+.adm-map { height: 620px; border-radius: 14px; border: 1px solid var(--adm-border); z-index: 0; }
+.adm-results { display: flex; flex-direction: column; height: 620px; }
+.adm-results-list { list-style: none; margin: 0; padding: 0 .25rem 0 0; overflow-y: auto; flex: 1; }
+.adm-res { margin-bottom: .6rem; }
+.adm-res button {
+    width: 100%; display: flex; align-items: center; gap: .8rem; text-align: left; cursor: pointer;
+    background: var(--adm-surface); color: var(--adm-text); border: 1px solid var(--adm-border);
+    border-radius: 12px; padding: .75rem;
+}
+.adm-res button:hover, .adm-res.is-selected button { border-color: var(--adm-orange); }
+.adm-res .adm-icon { width: 42px; height: 42px; font-size: 1.05rem; }
+.adm-res-txt { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.adm-res-txt strong { color: var(--adm-navy); font-size: .98rem; }
+.adm-res-txt small { color: var(--adm-muted); }
+.adm-res-dist { font-weight: 800; color: var(--adm-orange); white-space: nowrap; }
+.adm-res-empty { text-align: center; color: var(--adm-muted); padding: 2rem 1rem; }
+.adm-res-empty i { display: block; font-size: 2rem; color: var(--adm-orange); margin-bottom: .5rem; }
+
+/* Marqueurs */
+.adm-pin-wrap { background: transparent; border: 0; }
+.adm-pin {
+    width: 36px; height: 36px; display: grid; place-items: center; color: #fff; font-size: .95rem;
+    background: var(--adm-orange); border: 2px solid #fff; border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg); box-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+}
+.adm-pin i { transform: rotate(45deg); }
+.adm-me {
+    display: block; width: 22px; height: 22px; border-radius: 50%; background: #173B63; border: 3px solid #fff;
+    box-shadow: 0 0 0 6px rgba(23, 59, 99, .25);
+}
+
+/* Fenêtre d'information */
+.adm-pop { color: #263238; }
+.adm-pop strong { display: block; font-size: 1.05rem; color: #173B63; }
+.adm-pop-cat { font-size: .8rem; color: #5d6b75; }
+.adm-pop p { margin: .5rem 0; }
+.adm-pop-dist { color: #F28C28; font-weight: 700; }
+.adm-pop ul { list-style: none; padding: 0; margin: 0 0 .75rem; font-size: .9rem; }
+.adm-pop li { display: flex; gap: .55rem; margin-bottom: .25rem; }
+.adm-pop li i { width: 1rem; text-align: center; color: #F28C28; }
+.adm-pop-btn {
+    display: inline-block; background: #F28C28; color: #fff !important; text-decoration: none;
+    padding: .4rem .9rem; border-radius: 8px; font-weight: 700;
+}
+
+/* Mode sombre : on assombrit seulement les tuiles de la carte */
+[data-theme="dark"] .adm-map .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.95) contrast(.9); }
+
+@media (max-width: 991px) {
+    .adm-map-layout { grid-template-columns: 1fr; }
+    .adm-map { height: 460px; order: -1; }
+    .adm-results { height: auto; }
+    .adm-results-list { max-height: 360px; }
+}
+/* Administrations: cancel the hero's negative margin on search bars */
+.adm-search {
+    margin: 0 0 1.25rem;
+    max-width: none;
+}
+.adm-locate .adm-search { margin: 0; }          /* inside the row with the buttons */
+.adm-results .adm-search { margin: 0 0 .75rem !important; }  /* list filter */
+.adm-lead { max-width: 70ch; }
+.adm-map .leaflet-tile,
+.adm-map img { max-width: none !important; max-height: none !important; }
+[data-theme="dark"] .adm-radius select {
+    color-scheme: dark;
+    background-color: #172534;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .adm-radius select option {
+    background-color: #172534;
+    color: #ffffff;
+}
+#locForm {
+    position: relative;
+    overflow: visible;
+}
+
+.loc-suggestions {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.loc-suggestions:empty {
+    display: none;
+}
+
+.loc-suggestions button {
+    width: 100%;
+    padding: 15px 20px;
+    text-align: left;
+    background: transparent;
+    color: #223143;
+    border: none;
+    cursor: pointer;
+}
+
+.loc-suggestions button:hover {
+    background: #F28C28;
+    color: white;
+}
+
+/* Dark mode */
+
+[data-theme="dark"] .loc-suggestions {
+    background: #172534;
+}
+
+[data-theme="dark"] .loc-suggestions button {
+    color: white;
+}
+.dem-step-title {
+    color: #F78B32 !important;
+}
+
+.dem-num {
+    color: #F78B32 !important;
+    margin-right: 10px;
+}
+[data-theme="dark"] .dem-section h2,
+[data-theme="dark"] .dem-section h3,
+[data-theme="dark"] .dem-section h4 {
+    color: #F78B32 !important;
+}
+
+/* Space between icons and text */
+.dem-section i {
+    margin-right: 8px;
+}
+
+/* Improve list spacing */
+.dem-section li {
+    margin-bottom: 10px;
+}
+.civ-news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.civ-news-item {
+    background: rgba(255,255,255,0.06);
+    padding: 12px 16px;
+    border-radius: 12px;
+}
+
+.civ-news-category {
+    color: #F58232;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.civ-news-item h5 {
+    color: #FFFFFF;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.civ-news-item p {
+    color: #B8C9DC;
+    font-size: 12px;
+    margin: 0;
+}
+
+.civ-news-more {
+    display: block;
+    text-align: center;
+    background: #F58232;
+    color: white !important;
+    padding: 11px;
+    border-radius: 25px;
+    margin-top: 14px;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.civ-news-more:hover {
+    background: #E47122;
+}

@@ -1,0 +1,19 @@
+CIVLINK — Gestion des rendez-vous (Front Office + Back Office)
+
+1. Extraire le ZIP. Copier le contenu du dossier Views dans :
+   C:\xampp\htdocs\CivLink\Views\
+   Ne pas remplacer votre homepage ou navbar : ils ne sont pas inclus.
+2. XAMPP : démarrer Apache et MySQL.
+3. Dans phpMyAdmin > Importer : choisir database_rendezvous.sql.
+   Utilise la base civlink_auth créée avec le module Connexion.
+4. Front Office : http://localhost/CivLink/Views/FrontOffice/pages/rendezvous.php
+5. Back Office : http://localhost/CivLink/Views/BackOffice/pages/rendezvous.php
+   Nécessite un compte avec role 'administrateur' (comme pour Actualités CRUD).
+6. Si le lien de la navbar est déjà présent, il n'y a rien à changer.
+
+LES FONCTIONS
+Front : voir créneaux, réserver, consulter ses rendez-vous, changer de créneau et annuler une réservation future.
+Back : ajouter/consulter/modifier/supprimer les créneaux (suppression interdite si historique), consulter/annuler/supprimer les réservations annulées.
+
+IMPORTANT : créneaux de TEST fictifs, pas de réservation transmise aux administrations tunisiennes.
+En base : un index unique sur la colonne générée creneauActif empêche deux réservations confirmées pour le même créneau.
