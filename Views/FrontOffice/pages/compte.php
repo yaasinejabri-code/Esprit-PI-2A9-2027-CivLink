@@ -1,0 +1,7 @@
+<?php
+require_once __DIR__.'/../../../Models/Auth.php'; authStart();
+if (!isset($_SESSION['user'])) authRedirect('authentification.php');
+$user=$_SESSION['user']; $base='/CivLink/Views/FrontOffice'; $assets=$base.'/assets'; $pageTitle='Mon compte - CivLink'; $currentPage='auth';
+?>
+<!DOCTYPE html><html lang="fr"><head><?php require __DIR__.'/../includes/head.php'; ?><link rel="stylesheet" href="<?= $assets ?>/css/auth.css"></head><body>
+<?php require __DIR__.'/../includes/navbar.php'; ?><main class="auth-page"><div class="auth-shell"><aside class="auth-intro"><div class="auth-emblem"><i class="far fa-user"></i></div><span class="auth-kicker">ESPACE CITOYEN</span><h1>Bienvenue,<br><span><?= authEscape($user['prenom']) ?>.</span></h1><p>Vous êtes connecté à CIVLINK.</p><a class="auth-back" href="<?= $base ?>/index.php">← Retour à l'accueil</a></aside><section class="auth-form"><h2>Mon compte</h2><p>Vos informations personnelles</p><dl><dt>Nom complet</dt><dd><?= authEscape($user['prenom'].' '.$user['nom']) ?></dd><dt>Adresse e-mail</dt><dd><?= authEscape($user['email']) ?></dd><dt>Rôle</dt><dd><?= authEscape($user['role']) ?></dd></dl><form method="post" action="<?= $base ?>/pages/deconnexion.php"><input type="hidden" name="csrf" value="<?= authToken() ?>"><button class="auth-submit">Se déconnecter <i class="fas fa-sign-out-alt"></i></button></form></section></div></main><?php require __DIR__.'/../includes/footer.php'; require __DIR__.'/../includes/scripts.php'; ?></body></html>

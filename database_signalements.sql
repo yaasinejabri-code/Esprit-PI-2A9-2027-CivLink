@@ -1,0 +1,4 @@
+USE civlink_auth;
+CREATE TABLE IF NOT EXISTS categorie_signalement (idCategorie INT AUTO_INCREMENT PRIMARY KEY, nom VARCHAR(100) NOT NULL UNIQUE);
+INSERT IGNORE INTO categorie_signalement(nom) VALUES ('Voirie'),('Déchets'),('Éclairage public'),('Eau et assainissement'),('Espaces publics'),('Autre');
+CREATE TABLE IF NOT EXISTS signalement (idSignalement INT AUTO_INCREMENT PRIMARY KEY, idUtilisateur INT NOT NULL, idCategorie INT NOT NULL, titre VARCHAR(120) NOT NULL, description TEXT NOT NULL, adresse VARCHAR(255) NOT NULL, latitude DECIMAL(9,6) NULL, longitude DECIMAL(9,6) NULL, photo MEDIUMBLOB NULL, photoMime VARCHAR(40) NULL, statut ENUM('En attente','En cours','Résolu','Annulé') NOT NULL DEFAULT 'En attente', dateSignalement TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(idUtilisateur) REFERENCES utilisateur(idUtilisateur), FOREIGN KEY(idCategorie) REFERENCES categorie_signalement(idCategorie));
