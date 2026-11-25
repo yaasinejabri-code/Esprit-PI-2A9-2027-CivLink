@@ -1,5 +1,6 @@
+SET NAMES utf8mb4;
 -- CIVLINK - Gestion Administration / Service
--- Importer via phpMyAdmin dans civlink_auth. N'efface pas les autres tables.
+-- Importer dans civlink_auth (après database_auth.sql, avant database_demarches.sql). Aucune table n'est supprimée.
 CREATE DATABASE IF NOT EXISTS civlink_auth CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE civlink_auth;
 CREATE TABLE IF NOT EXISTS administration (
@@ -22,7 +23,7 @@ CREATE TABLE IF NOT EXISTS service (
  description TEXT NULL,
  actif TINYINT(1) NOT NULL DEFAULT 1,
  CONSTRAINT fk_service_administration FOREIGN KEY(idAdministration)
- REFERENCES administration(idAdministration) ON DELETE CASCADE,
+ REFERENCES administration(idAdministration) ON DELETE RESTRICT,
  INDEX idx_service_administration (idAdministration)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 -- Conserve les IDs de la carte (s1...s25), sans écraser les modifications futures.

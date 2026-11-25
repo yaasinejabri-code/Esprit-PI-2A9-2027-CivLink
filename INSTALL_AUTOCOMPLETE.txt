@@ -1,0 +1,4 @@
+1. Copier le dossier Views du ZIP dans C:\xampp\htdocs\CivLink\ (remplacer uniquement actualites.php et actualites.css).
+2. Dans phpMyAdmin, importer actualites_exemples.sql dans la base civlink_auth APRES database_actualites.sql.
+3. Recharger la page Actualités avec Ctrl+F5.
+Les articles sont des exemples pédagogiques, non des annonces officielles. Les prochains articles publiés par le Back Office apparaissent automatiquement.
