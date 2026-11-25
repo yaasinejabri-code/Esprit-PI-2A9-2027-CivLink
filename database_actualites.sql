@@ -1,4 +1,3 @@
--- Exécuter une seule fois dans phpMyAdmin, après database_auth.sql.
 CREATE DATABASE IF NOT EXISTS civlink_auth CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE civlink_auth;
 CREATE TABLE IF NOT EXISTS categorie_actualite (
@@ -31,4 +30,3 @@ INSERT IGNORE INTO categorie_actualite (nom,description) VALUES
  ('Factures','Informations sur les factures simulées'),
  ('Rendez-vous','Informations sur les rendez-vous'),
  ('CIVLINK','Informations sur le projet CIVLINK');
--- Les articles sont créés dans le Back Office. Aucun article officiel inventé.
