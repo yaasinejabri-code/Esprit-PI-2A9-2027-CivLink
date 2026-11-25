@@ -1,19 +1,4 @@
-CIVLINK — Gestion des rendez-vous (Front Office + Back Office)
-
-1. Extraire le ZIP. Copier le contenu du dossier Views dans :
-   C:\xampp\htdocs\CivLink\Views\
-   Ne pas remplacer votre homepage ou navbar : ils ne sont pas inclus.
-2. XAMPP : démarrer Apache et MySQL.
-3. Dans phpMyAdmin > Importer : choisir database_rendezvous.sql.
-   Utilise la base civlink_auth créée avec le module Connexion.
-4. Front Office : http://localhost/CivLink/Views/FrontOffice/pages/rendezvous.php
-5. Back Office : http://localhost/CivLink/Views/BackOffice/pages/rendezvous.php
-   Nécessite un compte avec role 'administrateur' (comme pour Actualités CRUD).
-6. Si le lien de la navbar est déjà présent, il n'y a rien à changer.
-
-LES FONCTIONS
-Front : voir créneaux, réserver, consulter ses rendez-vous, changer de créneau et annuler une réservation future.
-Back : ajouter/consulter/modifier/supprimer les créneaux (suppression interdite si historique), consulter/annuler/supprimer les réservations annulées.
-
-IMPORTANT : créneaux de TEST fictifs, pas de réservation transmise aux administrations tunisiennes.
-En base : un index unique sur la colonne générée creneauActif empêche deux réservations confirmées pour le même créneau.
+1. Extraire les fichiers de cette archive dans C:\xampp\htdocs\CivLink (fusionner les dossiers). Seuls index.php du FrontOffice et includes/navbar.php remplacent des fichiers existants. Sauvegarder ces deux fichiers avant de les remplacer. Si vous les avez personnalisés, reporter uniquement les changements de liens et le script session du navbar.
+2. Dans XAMPP, démarrer Apache et MySQL. Aller sur http://localhost/phpmyadmin/ puis Importer, choisir database_auth.sql et Exécuter. La base civlink_auth est indépendante des éventuelles bases existantes.
+3. Ouvrir http://localhost/CivLink/ et cliquer Créer un compte ou Connexion.
+Configuration locale: MySQL 127.0.0.1:3306, root sans mot de passe (modifier Models/Auth.php si différent). Ne pas utiliser ces identifiants en production. Les inscriptions créent uniquement des citoyens. Les sessions ne protègent pas encore les autres modules. Pas de récupération de mot de passe, ni vérification e-mail, ni CRUD administrateur dans ce lot. Le SQL crée les deux tables Utilisateur et Role. Le blocage des tentatives est limité à la session et n'est pas une protection de production.
