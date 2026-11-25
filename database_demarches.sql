@@ -1,4 +1,3 @@
--- Importer dans civlink_auth (après database_administrations.sql)
 CREATE DATABASE IF NOT EXISTS civlink_auth CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE civlink_auth;
 
